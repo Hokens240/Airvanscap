@@ -221,7 +221,7 @@
                     </a>
                   </li>
 
-                  
+
 
 
                   <!-- ------------------------------- -->
@@ -242,11 +242,9 @@
                           <img src="assets/img/people.png" class="rounded-circle" width="56" height="56"
                             alt="blackgold-img" />
                           <div>
-                            <h5 class="mb-0 fs-12"><span class="user-greeting-name"></span> <span class="text-success fs-11">Investor</span>
+                            <h5 class="mb-0 fs-12"><span class="user-greeting-name"></span> <span
+                                class="text-success fs-11">Investor</span>
                             </h5>
-                            <p class="mb-0 text-dark">
-                              <span id="userEmail"></span>
-                            </p>
                           </div>
                         </div>
                         <div class="message-body">
@@ -302,39 +300,43 @@
           </div>
 
           <!-- Vertically centered modal -->
-        <div class="modal fade" id="vertical-center-modal" tabindex="-1" aria-labelledby="vertical-center-modal" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered">
-            <div class="modal-content">
+          <div class="modal fade" id="vertical-center-modal" tabindex="-1" aria-labelledby="vertical-center-modal"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+              <div class="modal-content">
                 <div class="modal-header d-flex align-items-center">
-                    <h4 class="modal-title" id="myLargeModalLabel">
-                        New Deposit
-                    </h4>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  <h4 class="modal-title" id="myLargeModalLabel">
+                    New Deposit
+                  </h4>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
 
                   <form class="floating-labels mt-4 pt-2">
-                        <p class="text-white">Deposit the intended investment amount into the wallet below, await confirmation and your balance would be updated.</p>
-                        <div class="mb-4">
-                          <div class="input-group">
-                            <input type="text" id="myInput" class="form-control" value="TBH7x3W4foC9YoA4ME7czGNGT9CKJ89V22" disabled>
-                            <span class="input-group-text px-6" id="basic-addon1">
-                              <a href="#" onclick="copyText()"><i class="ti ti-clipboard fs-6"></i></a>
-                            </span>
-                          </div>
-                        </div>
-                        <p id="message"></p>
-                      </form>
-                        
+                    <p class="text-white">Deposit the intended investment amount into the wallet below, await
+                      confirmation and your balance would be updated.</p>
+                    <div class="mb-4">
+                      <div class="input-group">
+                        <input type="text" id="myInput" class="form-control" value="TBH7x3W4foC9YoA4ME7czGNGT9CKJ89V22"
+                          disabled>
+                        <span class="input-group-text px-6" id="basic-addon1">
+                          <a href="#" onclick="copyText()"><i class="ti ti-clipboard fs-6"></i></a>
+                        </span>
+                      </div>
+                    </div>
+                    <p id="message"></p>
+                  </form>
+
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn bg-danger-subtle text-danger  waves-effect text-start" data-bs-dismiss="modal">
-                        Done
-                    </button>
+                  <button type="button" class="btn bg-danger-subtle text-danger  waves-effect text-start"
+                    data-bs-dismiss="modal">
+                    Done
+                  </button>
                 </div>
+              </div>
             </div>
-        </div>
-    </div>
+          </div>
 
           <div class="row">
             <div class="col-12">
@@ -343,17 +345,37 @@
                   <div class="row">
                     <div class="col-lg-12 col-12">
                       <div class="button-group">
-                        <a href="#" class="btn bg-success-subtle text-success" data-bs-toggle="modal" data-bs-target="#vertical-center-modal">
+                        <!--<a href="#" class="btn bg-success-subtle text-success" data-bs-toggle="modal" data-bs-target="#vertical-center-modal">
                           <iconify-icon icon="fluent:money-hand-16-filled" class="fs-4"></iconify-icon>
                           Deposit Now
-                        </a>
-                        
+                        </a>-->
+
                         <!--<a href="investment page.html" class="btn bg-secondary-subtle text-secondary">
                           <iconify-icon icon="fa6-solid:money-bill-trend-up" class="fs-4"></iconify-icon>
                           Invest Now
                         </a>-->
                       </div>
-                      
+
+                    </div>
+                    <div class="col-lg-12 col-12">
+                      <div class="card text-center">
+                        <div class="card-body">
+                          <p class="card-text">
+                            <b>Email: <span id="userEmail"></span></b>
+                          </p>
+                          <p>
+                            <b>Wallet: 1BVU2d4FQk5xoXRHZxRWDEaovoSh7S6tss</b>
+                          </p>
+                          <p>
+                            <b>Number of referred accounts: 0</b>
+                          </p>
+                          <a href="#" class="btn bg-success-subtle text-success" data-bs-toggle="modal"
+                            data-bs-target="#vertical-center-modal">
+                            <iconify-icon icon="fluent:money-hand-16-filled" class="fs-4"></iconify-icon>
+                            Deposit Now
+                          </a>
+                        </div>
+                      </div>
                     </div>
                     <div class="col-lg-4 col-12">
                       <div class="card primary-gradient">
@@ -415,7 +437,8 @@
                         <div class="card-body text-center px-9 pb-4">
                           <div
                             class="d-flex align-items-center justify-content-center round-48 rounded text-bg-success flex-shrink-0 mb-3 mx-auto">
-                            <iconify-icon icon="solar:dollar-minimalistic-linear" class="fs-7 text-white"></iconify-icon>
+                            <iconify-icon icon="solar:dollar-minimalistic-linear"
+                              class="fs-7 text-white"></iconify-icon>
                           </div>
                           <h6 class="fw-normal fs-3 mb-1">Profit Balance</h6>
                           <h4 class="mb-3 d-flex align-items-center justify-content-center gap-1">
@@ -440,7 +463,7 @@
                 </div>
               </div>
             </div>
-            
+
 
           </div>
         </div>
