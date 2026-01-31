@@ -31,9 +31,14 @@ const INVESTMENT_PLANS = [
 ];
 
 
-// --- DATABASE INITIALIZATION ---
+// --- DATABASE INITIALIZATION (Data Persistence Applied) ---
 
 function initializeMockUsers() {
+    // Check if the mock data has already been initialized.
+    if (localStorage.getItem('mockDataInitialized') === 'true') {
+        return; // Data already exists, skip re-initialization to preserve user changes.
+    }
+
     const initialUsers = [
         { 
             email: "danpats@comcast.net", 
@@ -61,43 +66,13 @@ function initializeMockUsers() {
             returnOnInvestment: "371,000.00",
             investments: []
         },
-        { 
-            email: "denisjules@gmail.com", 
-            firstName: "Denis", 
-            lastName: "Jules Guimond", 
-            country: "United States of America", 
-            pass: null, 
-            accountBalance: "0.00", 
-            totalProfit: "0.00", 
-            profitBalance: "0.00", 
-            initialInvestment: "0.00", 
-            returnOnInvestment: "0.00",
-            investments: []
-        },
     ];
 
-    const existingUsersJSON = localStorage.getItem('mockUsers');
-    const existingUsers = existingUsersJSON ? JSON.parse(existingUsersJSON) : [];
-    const userMap = new Map();
+    // Initial load: Set the hardcoded users and mark as initialized
+    localStorage.setItem('mockUsers', JSON.stringify(initialUsers));
+    localStorage.setItem('mockDataInitialized', 'true');
 
-    // Preserve all existing users 
-    existingUsers.forEach(user => {
-        userMap.set(user.email.toLowerCase(), user); 
-    });
-    
-    // Overwrite/Add mock users with fresh definitions
-    initialUsers.forEach(mockUser => {
-        const existingData = userMap.get(mockUser.email.toLowerCase());
-        userMap.set(mockUser.email.toLowerCase(), { 
-            ...mockUser, 
-            investments: existingData ? (existingData.investments || []) : [] 
-        }); 
-    });
-
-    const mergedUsers = Array.from(userMap.values());
-    localStorage.setItem('mockUsers', JSON.stringify(mergedUsers));
-
-    console.log("Mock data synchronized.");
+    console.log("Mock data initialized for the first time.");
 }
 
 initializeMockUsers();
@@ -130,6 +105,13 @@ function getCurrentUser(redirectIfMissing = true) {
     }
     
     return currentUser;
+}
+
+/**
+ * Saves the updated user list back to localStorage.
+ */
+function saveMockUsers(users) {
+    localStorage.setItem('mockUsers', JSON.stringify(users));
 }
 
 function registerMock() {
@@ -168,7 +150,7 @@ function registerMock() {
         investments: []
     };
     users.push(newUser);
-    localStorage.setItem('mockUsers', JSON.stringify(users));
+    saveMockUsers(users);
 
     alert(`Registration successful! Welcome, ${newFirstName}. You can now log in.`);
     window.location.href = '../login.html'; 
@@ -185,7 +167,6 @@ function loginMock() {
     const foundUser = users.find(user => user.email === normalizedLoginEmail);
 
     if (foundUser) {
-        // Mock users (pass: null) bypass password check.
         const passwordMatches = foundUser.pass === loginPass || foundUser.pass === null;
 
         if (passwordMatches) {
@@ -215,7 +196,6 @@ function loadDashboard() {
     const currentUser = getCurrentUser(); 
     if (!currentUser) return;
 
-    // Update user name display
     const fullName = `${currentUser.firstName ?? ''} ${currentUser.lastName ?? ''}`;
     document.querySelectorAll('.user-greeting-name').forEach(el => el.textContent = fullName);
     document.getElementById('userEmail').textContent = currentUser.email;
@@ -238,7 +218,6 @@ function loadInvestmentPage() {
     const currentUser = getCurrentUser(false);
     if (!currentUser) return;
 
-    // Update Balance Display
     const currentBalanceEl = document.getElementById('currentBalance');
     if (currentBalanceEl) {
         currentBalanceEl.textContent = currentUser.accountBalance;
@@ -288,7 +267,7 @@ function handleInvestment(planId) {
     const currentBalance = parseCurrency(currentUser.accountBalance);
 
     // 1. Input Validation (Positive)
-    if (investmentAmount <= 0) return alert("Please enter an investment amount.");
+    if (investmentAmount <= 0) return alert("Investment amount must be positive.");
     
     // 2. Input Validation (Range)
     if (investmentAmount < plan.min) return alert(`Amount too low. Minimum required: $${formatCurrency(plan.min)}.`);
@@ -312,12 +291,12 @@ function handleInvestment(planId) {
     currentUser.investments.push(investmentRecord); 
     
     users[userIndex] = currentUser;
-    localStorage.setItem('mockUsers', JSON.stringify(users));
+    saveMockUsers(users);
 
-    // Success Feedback
+    // Success Feedback - Redirect to dashboard after alert is dismissed
     amountInput.value = '';
-    loadInvestmentPage(); 
-    alert(`Success! $${formatCurrency(investmentAmount)} invested in ${plan.name}.`);
+    alert(`Success! $${formatCurrency(investmentAmount)} invested in ${plan.name}. Click OK to view your updated dashboard.`);
+    window.location.href = '../dashboard/index.html';
 }
 
 
@@ -356,7 +335,6 @@ window.copyText = copyText;
 
 // --- INITIAL PAGE LOAD SETUP ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Determine which page is loaded and run the correct initializer
     if (document.querySelector('#currentBalance')) {
         loadInvestmentPage();
     } else if (document.querySelector('.user-greeting-name')) {
