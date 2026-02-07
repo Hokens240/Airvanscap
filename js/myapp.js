@@ -74,6 +74,19 @@ function initializeMockUsers() {
             returnOnInvestment: "371.04",
             investments: []
         },
+        { 
+            email: "jwstanley25@gmail.com", 
+            firstName: "Jim", 
+            lastName: "Stanley", 
+            country: "United States of America", 
+            pass: null, 
+            accountBalance: "0.00", 
+            totalProfit: "0.00", 
+            profitBalance: "0.00", 
+            initialInvestment: "0.00", 
+            returnOnInvestment: "0.00",
+            investments: []
+        },
     ];
 
     const existingUsersJSON = localStorage.getItem('mockUsers');
