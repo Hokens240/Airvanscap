@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/tiny-slider.css" />
     <link rel="stylesheet" href="assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/all-css-libraries.css" />
 
 </head>
 
@@ -151,10 +152,70 @@
                 transform: translateY(48px);
             }
         }
+
+        a {
+            text-decoration: none;
+        }
+
+        /* FAQ CSS */
+        .faq--area {
+            position: relative;
+            z-index: 1;
+        }
+
+        .faq--area .faq-content h2 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        @media only screen and (min-width:992px) {
+            .faq--area .faq-content h2 {
+                font-size: 2.125rem;
+            }
+        }
+
+        @media only screen and (min-width:1200px) {
+            .faq--area .faq-content h2 {
+                font-size: 2.75rem;
+            }
+        }
+
+        .faq--area .faq-content p {
+            font-size: 1.25rem;
+        }
+
+        .faq--accordian .card-header {
+            border-bottom: 0;
+            padding: 0;
+            margin-bottom: 0.25rem !important;
+        }
+
+        .faq--accordian .btn {
+            font-size: 1.25rem;
+            padding: 1rem 1.5rem;
+            text-align: left;
+            width: 100%;
+            background-color: #0d6efd;
+            color: #ffffff;
+        }
+
+        .faq--accordian .btn.collapsed {
+            background-color: #f1f4fd;
+            color: #1f0757;
+        }
+
+        .faq--accordian .card-body p {
+            font-size: 1rem;
+        }
+
+        .faq--thumbnail {
+            position: relative;
+            z-index: 1;
+        }
     </style>
 
     <!-- Start About Area -->
-    <section class="about section">
+    <section class="about section" style="background-color: #F4F7FA;">
         <div class="container">
             <div class="row align-items-center justify-content-between g-5">
                 <div class="col-12 col-lg-7">
@@ -244,30 +305,64 @@
                     </div>
                 </div>
                 <!-- About Text Area -->
-        <div class="col-12 col-sm-10 col-md-9 col-lg-5">
-          <div class="section-heading mb-0 ms-xl-5">
-            <h2 style="font-size: 2; margin-bottom: 1rem; font-weight: 700; color: #1f0757;">Market Analysis and Trade Inspiration</h2>
-            <p>With a striving network of experts, being a client of Peaktiercap opens doors to many
-              opportunities. Powerful market insight and the top trade setups in the industry. You will
-              have extensive connections to professional traders.</p>
-            <div class="button"><a class="btn mt-5" href="#">Get Started Now</a></div>
-          </div>
-        </div>
+                <div class="col-12 col-sm-10 col-md-9 col-lg-5">
+                    <div class="section-heading mb-0 ms-xl-5">
+                        <h2 style="font-size: 2; margin-bottom: 1rem; font-weight: 700; color: #1f0757;">Market Analysis
+                            and Trade Inspiration</h2>
+                        <p>With a striving network of experts, being a client of Peaktiercap opens doors to many
+                            opportunities. Powerful market insight and the top trade setups in the industry. You will
+                            have extensive connections to professional traders.</p>
+                        <div class="button"><a class="btn mt-5" href="#">Get Started Now</a></div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
     <!-- End About Area -->
 
+    <div style="margin-bottom: 80px; margin-top: 80px; text-align: center;">
+        <div class="container">
+            <div class="row align-items-center justify-content-between g-4">
+                <!-- Single Cool Facts -->
+                <div class="col-6 col-sm-3">
+                    <div class="single-cool-fact wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="100ms">
+                        <h2><span class="counter">39477</span></h2>
+                        <h5 class="mb-0">Satisfied Clients</h5>
+                    </div>
+                </div>
+                <!-- Single Cool Facts -->
+                <div class="col-6 col-sm-3">
+                    <div class="single-cool-fact wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="300ms">
+                        <h2><span class="counter">87339</span></h2>
+                        <h5 class="mb-0">Successful Trades</h5>
+                    </div>
+                </div>
+                <!-- Single Cool Facts -->
+                <div class="col-6 col-sm-3">
+                    <div class="single-cool-fact wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <h2><span class="counter">433740</span></h2>
+                        <h5 class="mb-0">Activities</h5>
+                    </div>
+                </div>
+                <!-- Single Cool Facts -->
+                <div class="col-6 col-sm-3">
+                    <div class="single-cool-fact wow fadeInUp" data-wow-duration="1000ms" data-wow-delay="500ms">
+                        <h2><span class="counter">127</span></h2>
+                        <h5 class="mb-0">Options</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Start Services Area -->
-    <div class="services section">
+    <div class="services section" style="background-color: #051441;">
         <div class="container">
             <div class="row">
                 <div class="col-12">
                     <div class="section-title">
-                        <h3 class="wow zoomIn" data-wow-delay=".2s">What we offer</h3>
-                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Our Services</h2>
-                        <p class="wow fadeInUp" data-wow-delay=".6s">There are many variations of passages of Lorem
-                            Ipsum available, but the majority have suffered alteration in some form.</p>
+                        <h2 class="wow fadeInUp text-white" data-wow-delay=".4s">Our core values that drive everything
+                            we do</h2>
                     </div>
                 </div>
             </div>
@@ -275,61 +370,35 @@
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
                     <div class="single-service">
                         <div class="main-icon">
-                            <i class="lni lni-grid-alt"></i>
+                            <i class="bi bi-tools"></i>
                         </div>
-                        <h4 class="text-title">Brand Identity Design</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
+                        <h4 class="text-title">Our Mission</h4>
+                        <p>Bitcoin is based on a protocol known as the blockchain,
+                            which allows to create, transfer and verify ultra-secure financial data without
+                            interference of third parties.
+                        </p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
                     <div class="single-service">
                         <div class="main-icon">
-                            <i class="lni lni-keyword-research"></i>
+                            <i class="bi bi-brush"></i>
                         </div>
-                        <h4 class="text-title">Digital Marketing</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
+                        <h4 class="text-title">Our Advantages</h4>
+                        <p>Our mission as an official partner of Bitcoin Foundation is
+                            to help you enter and better understand the world of #1 cryptocurrency and avoid any
+                            issues you may encounter.</p>
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
                     <div class="single-service">
                         <div class="main-icon">
-                            <i class="lni lni-vector"></i>
+                            <i class="bi bi-bar-chart"></i>
                         </div>
-                        <h4 class="text-title">Design and Development</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".2s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-book"></i>
-                        </div>
-                        <h4 class="text-title">IT Consulting Service</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".4s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-cloud-network"></i>
-                        </div>
-                        <h4 class="text-title">Cloud Computing</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
-                    </div>
-                </div>
-                <div class="col-lg-4 col-md-6 col-12 wow fadeInUp" data-wow-delay=".6s">
-                    <div class="single-service">
-                        <div class="main-icon">
-                            <i class="lni lni-display-alt"></i>
-                        </div>
-                        <h4 class="text-title">Graphics Design</h4>
-                        <p>Invest in Bitcoin on the regular or save with one of the highest interest rates on the
-                            market.</p>
+                        <h4 class="text-title">Our Guarantees</h4>
+                        <p>We are here because we are passionate about open,
+                            transparent markets and aim to be a major driving force in widespread adoption, we
+                            are the first and the best in cryptocurrency.</p>
                     </div>
                 </div>
             </div>
@@ -337,32 +406,347 @@
     </div>
     <!-- End Services Area -->
 
-    <!-- Start Call Action Area -->
-    <section class="call-action bg-white">
+    <!-- Start Testimonials Area -->
+    <section class="testimonials style2 section">
         <div class="container">
-            <div class="inner-content">
-                <div class="row align-items-center">
-                    <div class="col-lg-6 col-md-7 col-12">
-                        <div class="text">
-                            <h2>You are using free
-                                <br> <span>Lite version of Craft.</span>
-                            </h2>
-                            <p style="display: block;margin-top: 10px;">Please, purchase full version of the template to
-                                get all pages,
-                                features and commercial license. </p>
+            <div class="row">
+                <div class="col-12">
+                    <div class="section-title">
+                        <h3 class="wow zoomIn" data-wow-delay=".2s">Customer Reviews</h3>
+                        <h2 class="wow fadeInUp" data-wow-delay=".4s">Testimonials</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row testimonial-slider">
+                <div class="col-lg-6 col-12 ">
+                    <!-- Start Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="inner-content">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation"></i>
+                            </div>
+                            <div class="text">
+                                <p>“The company has done an excellent job presenting the analysis and
+                                    insights. I want to
+                                    applaud them for changing my financial life”</p>
+                            </div>
+                            <div class="author">
+                                <img src="../img/cl1.jpg" alt="#">
+                                <h4 class="name">Donald Luka
+                                </h4>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-lg-6 col-md-5 col-12">
-                        <div class="button">
-                            <a href="#" class="btn">Buy Pro Version
-                            </a>
+                    <!-- End Single Testimonial -->
+                </div>
+                <div class="col-lg-6 col-12 ">
+                    <!-- Start Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="inner-content">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation"></i>
+                            </div>
+                            <div class="text">
+                                <p>“Peaktiercap has exceeded my expectations in being reliable, consistent
+                                    and
+                                    client-friendly”</p>
+                            </div>
+                            <div class="author">
+                                <img src="../img/cl2.jpg" alt="#">
+                                <h4 class="name">Takur Kalka
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Testimonial -->
+                </div>
+                <div class="col-lg-6 col-12 ">
+                    <!-- Start Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="inner-content">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation"></i>
+                            </div>
+                            <div class="text">
+                                <p>“Peaktiercap provides an excellent service. They make sure the needs of
+                                    their
+                                    ninvestors are attended to as soon as possible”</p>
+                            </div>
+                            <div class="author">
+                                <img src="../img/cl3.jpg" alt="#">
+                                <h4 class="name">Sarah Albert
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Testimonial -->
+                </div>
+                <div class="col-lg-6 col-12 ">
+                    <!-- Start Single Testimonial -->
+                    <div class="single-testimonial">
+                        <div class="inner-content">
+                            <div class="quote-icon">
+                                <i class="lni lni-quotation"></i>
+                            </div>
+                            <div class="text">
+                                <p>“I will like to use this opportunity to thank the Peaktiercapital's team for the
+                                    amazing
+                                    work they are doing to make sure the investors earn lots of profits”</p>
+                            </div>
+                            <div class="author">
+                                <img src="../img/cl4.jpg" alt="#">
+                                <h4 class="name">Dominic Thiem
+                                </h4>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Single Testimonial -->
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- End Testimonial Area -->
+
+    <!-- FAQ Area-->
+    <div class="faq--area" style="padding: 40px;">
+        <div class="container">
+            <div class="row g-4 g-lg-5">
+                <div class="col-12 col-lg-6">
+                    <div class="faq-content">
+                        <div class="accordion faq--accordian" id="faqaccordian">
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingOne">
+                                    <button class="btn" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseOne" aria-expanded="true"
+                                        aria-controls="collapseOne">1. What is Bitcoin?</button>
+                                </div>
+                                <div class="collapse show" id="collapseOne" aria-labelledby="headingOne"
+                                    data-bs-parent="#faqaccordian">
+                                    <div class="card-body">
+                                        <p>Bitcoin is an innovative payment network and a new kind of money. It uses
+                                            peer-to-peer technology to operate with no central authority or banks;
+                                            managing
+                                            transactions and the issuing of bitcoins is carried out collectively by the
+                                            network. Bitcoin is open-source; its design is public, nobody owns or
+                                            controls
+                                            Bitcoin and everyone can take part in it. Through many of its unique
+                                            properties,
+                                            Bitcoin allows exciting uses that could not be covered by any previous
+                                            payment
+                                            system. Trading Bitcoin is however inherent with too many technicality and
+                                            requires and expert knowledge which is why you only need to deposit money
+                                            for
+                                            your investment while our experts handle your trading. At the end of every
+                                            14
+                                            days, you will receive a payout. But first, you need to select one of the
+                                            packages found on our exchange to invest in. Below is a vivid explanations
+                                            of
+                                            the terms used in our online platform.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingTwo">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseTwo" aria-expanded="true"
+                                        aria-controls="collapseTwo">2. Account Balance?</button>
+                                </div>
+                                <div class="collapse" id="collapseTwo" aria-labelledby="headingTwo"
+                                    data-bs-parent="#faqaccordian">
+                                    <div class="card-body">
+                                        <p>A Peaktiercap Account Balance is the amount of money present in a financial
+                                            repository savings account, at any given moment. The account balance is
+                                            always
+                                            the net amount after factoring in all debits and credits on your initial
+                                            investment, whatever remains is kept on your account as savings after an
+                                            investment has been made. All monies in your Sinecc Account Balance attracts
+                                            a
+                                            3% biweekly return and can be topped at any time to boost account balance
+                                            and
+                                            Sinecc savings ultimately.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingThree">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseThree" aria-expanded="true"
+                                        aria-controls="collapseThree">3. Total Investment?</button>
+                                </div>
+                                <div class="collapse" id="collapseThree" aria-labelledby="headingThree"
+                                    data-bs-parent="#faqaccordian">
+                                    <div class="card-body">
+                                        <p>Total Investment means the sum of the aggregate Capital Contributions made
+                                            throughout your investment journey. Total Investment is a sum total of all
+                                            the
+                                            deposits made in Bitcoins by a user to the company wallet address and which
+                                            were
+                                            invested with.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingEight">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseEight" aria-expanded="true"
+                                        aria-controls="collapseEight">6. Initial Investment?</button>
+                                </div>
+                                <div class="collapse" id="collapseEight" aria-labelledby="headingEight"
+                                    data-bs-parent="#faqaccordian2">
+                                    <div class="card-body">
+                                        <p>Initial Investment is the amount used to start a business or an investment
+                                            project with Peaktiercap. It is also called initial investment outlay or
+                                            simply
+                                            initial outlay.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-lg-6">
+                    <div class="faq-content">
+                        <div class="accordion faq--accordian" id="faqaccordian2">
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingFour">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFour" aria-expanded="true"
+                                        aria-controls="collapseFour">4. ROI?</button>
+                                </div>
+                                <div class="collapse" id="collapseFour" aria-labelledby="headingFour"
+                                    data-bs-parent="#faqaccordian2">
+                                    <div class="card-body">
+                                        <p>Return on Investment or return on costs of investment is a ratio between net
+                                            income and investment. It is your biweekly returns on your investment which
+                                            measures at 10 to 15 percent. A high ROI means the investment's gains
+                                            compare
+                                            favourably to its cost. As a performance measure, ROI is used to evaluate
+                                            the
+                                            efficiency of your investment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingFive">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseFive" aria-expanded="true"
+                                        aria-controls="collapseFive">5. Referral Bonus?</button>
+                                </div>
+                                <div class="collapse" id="collapseFive" aria-labelledby="headingFive"
+                                    data-bs-parent="#faqaccordian2">
+                                    <div class="card-body">
+                                        <p>A Peaktiercap Referral Bonus is an incentive that motivates our employees and
+                                            investors to recruit candidates from within their networks. It is often a
+                                            part
+                                            of a more robust employee referral program. The referral bonus is often
+                                            granted
+                                            once the investor activates their Peaktiercap Account and remains with the
+                                            company
+                                            for a predetermined amount of time.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingSix">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSix" aria-expanded="true"
+                                        aria-controls="collapseSix">6. Total Profits?</button>
+                                </div>
+                                <div class="collapse" id="collapseSix" aria-labelledby="headingSix"
+                                    data-bs-parent="#faqaccordian2">
+                                    <div class="card-body">
+                                        <p>Total Profits is the sum total of all the money made on your account
+                                            beginning
+                                            from your account activation date before factoring out Return on Investment.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Single FAQ -->
+                            <div class="card border-0">
+                                <div class="card-header" id="headingSeven">
+                                    <button class="btn collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#collapseSeven" aria-expanded="true"
+                                        aria-controls="collapseSeven">6. Profit Balance?</button>
+                                </div>
+                                <div class="collapse" id="collapseSeven" aria-labelledby="headingSeven"
+                                    data-bs-parent="#faqaccordian2">
+                                    <div class="card-body">
+                                        <p>Profit Balance is what remains of the total profits after factoring out
+                                            Return
+                                            on Investment and the company's service charge for managing your trades.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 fixed-bottom">
+                    <div class="justify-content-center mb-4">
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <!--<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div>-->
+                            <script type="text/javascript"
+                                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                                    {
+                                        "symbols": [
+                                            {
+                                                "proName": "FOREXCOM:SPXUSD",
+                                                "title": "S&P 500"
+                                            },
+                                            {
+                                                "proName": "FOREXCOM:NSXUSD",
+                                                "title": "Nasdaq 100"
+                                            },
+                                            {
+                                                "proName": "FX_IDC:EURUSD",
+                                                "title": "EUR/USD"
+                                            },
+                                            {
+                                                "proName": "BITSTAMP:BTCUSD",
+                                                "title": "BTC/USD"
+                                            },
+                                            {
+                                                "proName": "BITSTAMP:ETHUSD",
+                                                "title": "ETH/USD"
+                                            }
+                                        ],
+                                            "showSymbolLogo": true,
+                                                "colorTheme": "light",
+                                                    "isTransparent": false,
+                                                        "displayMode": "adaptive",
+                                                            "locale": "en"
+                                    }
+                                </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-    <!-- End Call Action Area -->
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -376,18 +760,19 @@
                             <div class="single-footer f-about">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="assets/images/logo/white-logo.svg" alt="#">
+                                        <img src="assets/images/Peaktiercapital.png" style="width: 70px;" alt="#">
                                     </a>
                                 </div>
-                                <p>Making the world a better place through constructing elegant hierarchies.</p>
+                                <p>We provide the best returns in the business. Trade with us and get returns as high as
+                                    90%. We have a team of expert traders who use some of the best skills and tools in
+                                    the industry to trade and bring in good Return On Investment(ROI) for our customers.
+                                </p>
                                 <h4 class="social-title">Follow Us On:</h4>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-pinterest"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
@@ -395,41 +780,14 @@
                         <div class="col-lg-2 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-link">
-                                <h3>Solutions</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">Marketing</a></li>
-                                    <li><a href="javascript:void(0)">Analytics</a></li>
-                                    <li><a href="javascript:void(0)">Commerce</a></li>
-                                    <li><a href="javascript:void(0)">Insights</a></li>
+                                    <li><a href="javascript:void(0)">About us</a></li>
+                                    <li><a href="javascript:void(0)">Exchange</a></li>
+                                    <li><a href="javascript:void(0)">Team</a></li>
+                                    <li><a href="javascript:void(0)">Lifestyle</a></li>
+                                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                                    <li><a href="javascript:void(0)">Terms of Use</a></li>
                                 </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>Support</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">Pricing</a></li>
-                                    <li><a href="javascript:void(0)">Documentation</a></li>
-                                    <li><a href="javascript:void(0)">Guides</a></li>
-                                    <li><a href="javascript:void(0)">API Status</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer newsletter">
-                                <h3>Subscribe</h3>
-                                <p>Subscribe to our newsletter for the latest updates</p>
-                                <form action="#" method="get" target="_blank" class="newsletter-form">
-                                    <input name="EMAIL" placeholder="Email address" required="required" type="email">
-                                    <div class="button">
-                                        <button class="sub-btn"><i class="lni lni-envelope"></i>
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
                             <!-- End Single Widget -->
                         </div>
@@ -444,11 +802,7 @@
                 <div class="inner-content">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
-                            <p class="copyright-text">© 2023 CryptoLand - All Rights Reserved</p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <p class="copyright-owner">Designed and Developed by <a href="https://graygrids.com/"
-                                    rel="nofollow" target="_blank">GrayGrids</a>
+                            <p class="copyright-text">© 2026 Peaktiercapital - All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -465,6 +819,7 @@
 
     <!-- ========================= JS here ========================= -->
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/all-js-libraries.js"></script>
     <script src="assets/js/wow.min.js"></script>
     <script src="assets/js/tiny-slider.js"></script>
     <script src="assets/js/glightbox.min.js"></script>
