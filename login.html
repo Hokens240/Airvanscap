@@ -1,11 +1,10 @@
-
 <!DOCTYPE html>
 <html class="no-js" lang="zxx">
 
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
-    <title>Sign In - Craft Startup Landing Page Template.</title>
+    <title>Peaktiercapital | Login</title>
     <meta name="description" content="" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.svg" />
@@ -17,6 +16,7 @@
     <link rel="stylesheet" href="assets/css/tiny-slider.css" />
     <link rel="stylesheet" href="assets/css/glightbox.min.css" />
     <link rel="stylesheet" href="assets/css/main.css" />
+    <link rel="stylesheet" href="assets/css/all-css-libraries.css" />
 
 </head>
 
@@ -49,15 +49,10 @@
                         <!-- Start Navbar -->
                         <nav class="navbar navbar-expand-lg">
                             <a class="navbar-brand" href="index.html">
-                                <img src="assets/images/logo/white-logo.svg" alt="Logo">
+                                <img src="assets/images/Peaktiercapital.png" style="height: 50px; width: 50px;"
+                                    alt="Logo">
                             </a>
-                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                aria-expanded="false" aria-label="Toggle navigation">
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                                <span class="toggler-icon"></span>
-                            </button>
+
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
                                     <li class="nav-item">
@@ -67,38 +62,25 @@
                                         <a href="about-us.html" aria-label="Toggle navigation">About</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dd-menu active collapsed" href="javascript:void(0)"
-                                            data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
-                                            aria-controls="navbarSupportedContent" aria-expanded="false"
-                                            aria-label="Toggle navigation">Pages</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-1">
-                                            <li class="nav-item"><a href="about-us.html">About Us</a></li>
-                                            <li class="nav-item"><a href="pricing.html">Our Pricing</a></li>
-                                            <li class="nav-item active"><a href="signin.html">Sign In</a></li>
-                                            <li class="nav-item"><a href="signup.html">Sign Up</a></li>
-                                            <li class="nav-item"><a href="reset-password.html">Reset Password</a>
-                                            <li class="nav-item"><a href="mail-success.html">Mail Success</a></li>
-                                            <li class="nav-item"><a href="404.html">404 Error</a></li>
-                                        </ul>
+                                        <a href="exchange.html" aria-label="Toggle navigation">Exchange</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="dd-menu collapsed" href="javascript:void(0)" data-bs-toggle="collapse"
-                                            data-bs-target="#submenu-1-2" aria-controls="navbarSupportedContent"
-                                            aria-expanded="false" aria-label="Toggle navigation">Blog</a>
-                                        <ul class="sub-menu collapse" id="submenu-1-2">
-                                            <li class="nav-item"><a href="blog-grid.html">Blog Grid</a>
-                                            </li>
-                                            <li class="nav-item"><a href="blog-single.html">Blog Single</a></li>
-                                        </ul>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="contact.html" aria-label="Toggle navigation">Contact</a>
+                                        <a href="lifestyle.html" aria-label="Toggle navigation">Lifestyle</a>
                                     </li>
                                 </ul>
                             </div> <!-- navbar collapse -->
                             <div class="button">
-                                <a href="signup.html" class="btn">Get started</a>
+                                <a href="login.html" class="btn">Login</a>
+                                <a href="register.html" class="btn">Register</a>
                             </div>
+
+                            <button class="navbar-toggler mobile-menu-btn" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                                <span class="toggler-icon"></span>
+                            </button>
                         </nav>
                         <!-- End Navbar -->
                     </div>
@@ -108,6 +90,12 @@
     </header>
     <!-- End Header Area -->
 
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+
     <!-- Start Breadcrumbs -->
     <div class="breadcrumbs">
         <div class="container">
@@ -115,10 +103,6 @@
                 <div class="col-lg-6 offset-lg-3 col-md-12 col-12">
                     <div class="breadcrumbs-content">
                         <h1 class="page-title">Sign In</h1>
-                        <ul class="breadcrumb-nav">
-                            <li><a href="index.html">Home</a></li>
-                            <li>Sign In</li>
-                        </ul>
                     </div>
                 </div>
             </div>
@@ -134,39 +118,32 @@
                     <form class="card login-form inner-content" method="post">
                         <div class="card-body">
                             <div class="title">
-                                <h3>Sign In Now</h3>
-                                <p>Sign in by entering the information below.</p>
+                                <h3>Welcome Back</h3>
+                                <p>Enter your account details below to sign in</p>
                             </div>
                             <div class="input-head">
                                 <div class="form-group input-group">
                                     <label><i class="lni lni-envelope"></i></label>
-                                    <input class="form-control" type="email" id="reg-email"
+                                    <input class="form-control" type="email" id="emailInput"
                                         placeholder="Enter your email" required>
                                 </div>
                                 <div class="form-group input-group">
-                                    <label><i class="lni lni-lock-alt"></i></label>
-                                    <input class="form-control" type="password" id="reg-pass"
-                                        placeholder="Enter your password" required>
+                                    <label for="passwordInput"><i class="lni lni-lock-alt"></i></label>
+                                    <input class="form-control" type="password" id="passwordInput"
+                                        placeholder="Enter your password">
                                 </div>
                             </div>
-                            <div class="d-flex flex-wrap justify-content-between bottom-content">
+                            <!--<div class="d-flex flex-wrap justify-content-between bottom-content">
                                 <div class="form-check">
                                     <input type="checkbox" class="form-check-input width-auto" id="exampleCheck1">
                                     <label class="form-check-label">Remember me</label>
                                 </div>
                                 <a class="lost-pass" href="reset-password.html">Forgot password?</a>
-                            </div>
+                            </div>-->
                             <div class="button">
-                                <button class="btn" type="submit">Sign In</button>
+                                <button class="btn" type="button" onclick="loginMock()">Sign In</button>
                             </div>
-                            <div class="or"><span>Or</span></div>
-                            <div class="alt-option">
-                                <span class="small-title">Sign in with your work email</span>
-                                <a href="javascript:void(0)" class="option-button"><img
-                                        src="assets/images/account-login/google.png" alt="#">Sign
-                                    In With Google
-                                </a>
-                            </div>
+                            
                             <h4 class="create-account">Don't have an account? <a href="signup.html">Sign Up Here</a>
                             </h4>
                         </div>
@@ -176,6 +153,55 @@
         </div>
     </div>
     <!-- End Account Sign In Area -->
+
+    <section>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12 col-lg-12 col-md-12 fixed-bottom">
+                    <div class="justify-content-center mb-4">
+                        <!-- TradingView Widget BEGIN -->
+                        <div class="tradingview-widget-container">
+                            <div class="tradingview-widget-container__widget"></div>
+                            <!--<div class="tradingview-widget-copyright"><a href="https://www.tradingview.com" rel="noopener" target="_blank"><span class="blue-text">Ticker Tape</span></a> by TradingView</div>-->
+                            <script type="text/javascript"
+                                src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js" async>
+                                    {
+                                        "symbols": [
+                                            {
+                                                "proName": "FOREXCOM:SPXUSD",
+                                                "title": "S&P 500"
+                                            },
+                                            {
+                                                "proName": "FOREXCOM:NSXUSD",
+                                                "title": "Nasdaq 100"
+                                            },
+                                            {
+                                                "proName": "FX_IDC:EURUSD",
+                                                "title": "EUR/USD"
+                                            },
+                                            {
+                                                "proName": "BITSTAMP:BTCUSD",
+                                                "title": "BTC/USD"
+                                            },
+                                            {
+                                                "proName": "BITSTAMP:ETHUSD",
+                                                "title": "ETH/USD"
+                                            }
+                                        ],
+                                            "showSymbolLogo": true,
+                                                "colorTheme": "light",
+                                                    "isTransparent": false,
+                                                        "displayMode": "adaptive",
+                                                            "locale": "en"
+                                    }
+                                </script>
+                        </div>
+                        <!-- TradingView Widget END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Start Footer Area -->
     <footer class="footer section">
@@ -189,18 +215,19 @@
                             <div class="single-footer f-about">
                                 <div class="logo">
                                     <a href="index.html">
-                                        <img src="assets/images/logo/white-logo.svg" alt="#">
+                                        <img src="assets/images/Peaktiercapital.png" style="width: 70px;" alt="#">
                                     </a>
                                 </div>
-                                <p>Making the world a better place through constructing elegant hierarchies.</p>
+                                <p>We provide the best returns in the business. Trade with us and get returns as high as
+                                    90%. We have a team of expert traders who use some of the best skills and tools in
+                                    the industry to trade and bring in good Return On Investment(ROI) for our customers.
+                                </p>
                                 <h4 class="social-title">Follow Us On:</h4>
                                 <ul class="social">
                                     <li><a href="javascript:void(0)"><i class="lni lni-facebook-filled"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-instagram"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-twitter-original"></i></a></li>
                                     <li><a href="javascript:void(0)"><i class="lni lni-linkedin-original"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-pinterest"></i></a></li>
-                                    <li><a href="javascript:void(0)"><i class="lni lni-youtube"></i></a></li>
                                 </ul>
                             </div>
                             <!-- End Single Widget -->
@@ -208,41 +235,14 @@
                         <div class="col-lg-2 col-md-6 col-12">
                             <!-- Single Widget -->
                             <div class="single-footer f-link">
-                                <h3>Solutions</h3>
                                 <ul>
-                                    <li><a href="javascript:void(0)">Marketing</a></li>
-                                    <li><a href="javascript:void(0)">Analytics</a></li>
-                                    <li><a href="javascript:void(0)">Commerce</a></li>
-                                    <li><a href="javascript:void(0)">Insights</a></li>
+                                    <li><a href="javascript:void(0)">About us</a></li>
+                                    <li><a href="javascript:void(0)">Exchange</a></li>
+                                    <li><a href="javascript:void(0)">Team</a></li>
+                                    <li><a href="javascript:void(0)">Lifestyle</a></li>
+                                    <li><a href="javascript:void(0)">Privacy Policy</a></li>
+                                    <li><a href="javascript:void(0)">Terms of Use</a></li>
                                 </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-2 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer f-link">
-                                <h3>Support</h3>
-                                <ul>
-                                    <li><a href="javascript:void(0)">Pricing</a></li>
-                                    <li><a href="javascript:void(0)">Documentation</a></li>
-                                    <li><a href="javascript:void(0)">Guides</a></li>
-                                    <li><a href="javascript:void(0)">API Status</a></li>
-                                </ul>
-                            </div>
-                            <!-- End Single Widget -->
-                        </div>
-                        <div class="col-lg-4 col-md-6 col-12">
-                            <!-- Single Widget -->
-                            <div class="single-footer newsletter">
-                                <h3>Subscribe</h3>
-                                <p>Subscribe to our newsletter for the latest updates</p>
-                                <form action="#" method="get" target="_blank" class="newsletter-form">
-                                    <input name="EMAIL" placeholder="Email address" required="required" type="email">
-                                    <div class="button">
-                                        <button class="sub-btn"><i class="lni lni-envelope"></i>
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
                             <!-- End Single Widget -->
                         </div>
@@ -257,11 +257,7 @@
                 <div class="inner-content">
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
-                            <p class="copyright-text">© 2023 CryptoLand - All Rights Reserved</p>
-                        </div>
-                        <div class="col-lg-6 col-md-6 col-12">
-                            <p class="copyright-owner">Designed and Developed by <a href="https://graygrids.com/"
-                                    rel="nofollow" target="_blank">GrayGrids</a>
+                            <p class="copyright-text">© 2026 Peaktiercapital - All Rights Reserved</p>
                         </div>
                     </div>
                 </div>
@@ -283,6 +279,7 @@
     <script src="assets/js/glightbox.min.js"></script>
     <script src="assets/js/count-up.min.js"></script>
     <script src="assets/js/main.js"></script>
+    <script src="js/myapp.js"></script>
 </body>
 
 </html>
