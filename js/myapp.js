@@ -67,11 +67,11 @@ function initializeMockUsers() {
             lastName: "Jules Guimond", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "17,831.11", 
-            totalProfit: "17,831.11", 
-            profitBalance: "17,831.11", 
+            accountBalance: "21,422.87", 
+            totalProfit: "21,422.87", 
+            profitBalance: "21,422.87", 
             initialInvestment: "230.06", 
-            returnOnInvestment: "17,831.11",
+            returnOnInvestment: "21,422.87",
             investments: []
         },
         { 
