@@ -67,11 +67,11 @@ function initializeMockUsers() {
             lastName: "Jules Guimond", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "30,648.17", 
-            totalProfit: "30,648.17", 
-            profitBalance: "30,648.17", 
+            accountBalance: "34,337.14", 
+            totalProfit: "34,337.14", 
+            profitBalance: "34,337.14", 
             initialInvestment: "230.06", 
-            returnOnInvestment: "30,648.17",
+            returnOnInvestment: "34,337.14",
             investments: []
         },
         { 
@@ -80,11 +80,11 @@ function initializeMockUsers() {
             lastName: "Stanley", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "5000.00", 
-            totalProfit: "5000.00", 
-            profitBalance: "5000.00", 
-            initialInvestment: "5000.00", 
-            returnOnInvestment: "5000.00",
+            accountBalance: "6207.11", 
+            totalProfit: "6207.11", 
+            profitBalance: "6207.11", 
+            initialInvestment: "1350.00", 
+            returnOnInvestment: "6207.11",
             investments: []
         },
     ];
