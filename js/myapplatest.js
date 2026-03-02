@@ -33,10 +33,6 @@ const INVESTMENT_PLANS = [
 
 // --- DATABASE INITIALIZATION ---
 
-// Baseline for current session to calculate growth
-const SESSION_START_TIME = Date.now();
-const INCREMENT_RATE_PER_SECOND = 0.05; // Adjust speed of profit growth here
-
 function initializeMockUsers() {
     const initialUsers = [
         { 
@@ -113,29 +109,8 @@ function initializeMockUsers() {
 
     const mergedUsers = Array.from(userMap.values());
     localStorage.setItem('mockUsers', JSON.stringify(mergedUsers));
-}
 
-/**
- * Applies temporal growth to a user object for display purposes.
- * This ensures financial metrics like Total Profit and ROI increment in real-time.
- */
-function getCalculatedUser(user) {
-    if (!user) return null;
-    
-    const secondsElapsed = (Date.now() - SESSION_START_TIME) / 1000;
-    const increment = secondsElapsed * INCREMENT_RATE_PER_SECOND;
-
-    // Create a copy to avoid mutating the original source data
-    const updatedUser = { ...user };
-    
-    // Increment specific numeric metrics for visual effect in the UI
-    updatedUser.totalProfit = formatCurrency(parseCurrency(user.totalProfit) + increment);
-    updatedUser.returnOnInvestment = formatCurrency(parseCurrency(user.returnOnInvestment) + increment);
-    
-    // Increment profit balance at a slightly lower rate
-    updatedUser.profitBalance = formatCurrency(parseCurrency(user.profitBalance) + (increment * 0.5));
-
-    return updatedUser;
+    console.log("Mock data synchronized.");
 }
 
 initializeMockUsers();
@@ -144,7 +119,7 @@ initializeMockUsers();
 // --- AUTHENTICATION & SESSION LOGIC ---
 
 /**
- * Retrieves the current user and applies real-time growth calculations.
+ * Retrieves the current user from session and local storage.
  */
 function getCurrentUser(redirectIfMissing = true) {
     const userEmail = sessionStorage.getItem('currentUserEmail');
@@ -167,8 +142,7 @@ function getCurrentUser(redirectIfMissing = true) {
         return null;
     }
     
-    // Return the user with real-time increments applied to financial metrics
-    return getCalculatedUser(currentUser);
+    return currentUser;
 }
 
 function registerMock() {
@@ -224,6 +198,7 @@ function loginMock() {
     const foundUser = users.find(user => user.email === normalizedLoginEmail);
 
     if (foundUser) {
+        // Mock users (pass: null) bypass password check.
         const passwordMatches = foundUser.pass === loginPass || foundUser.pass === null;
 
         if (passwordMatches) {
@@ -250,43 +225,39 @@ function logoutMock() {
 // --- DATA DISPLAY AND INITIALIZATION ---
 
 function loadDashboard() {
-    const render = () => {
-        const currentUser = getCurrentUser(); 
-        if (!currentUser) return;
+    const currentUser = getCurrentUser(); 
+    if (!currentUser) return;
 
-        const fullName = `${currentUser.firstName ?? ''} ${currentUser.lastName ?? ''}`;
-        document.querySelectorAll('.user-greeting-name').forEach(el => el.textContent = fullName);
-        document.getElementById('userEmail').textContent = currentUser.email;
+    // Update user name display
+    const fullName = `${currentUser.firstName ?? ''} ${currentUser.lastName ?? ''}`;
+    document.querySelectorAll('.user-greeting-name').forEach(el => el.textContent = fullName);
+    document.getElementById('userEmail').textContent = currentUser.email;
 
-        // Updates all elements with the financial-metric class with the incrementing values
-        document.querySelectorAll('.financial-metric').forEach(element => {
-            const metricKey = element.getAttribute('data-metric');
-            if (metricKey && currentUser[metricKey] !== undefined) {
-                element.textContent = currentUser[metricKey]; 
-            } else {
-                element.textContent = "N/A";
-            }
-        });
-    };
-
-    render();
-    // Refresh display every second to show increasing numbers
-    setInterval(render, 1000);
+    // Update financial metrics based on data-metric attributes
+    document.querySelectorAll('.financial-metric').forEach(element => {
+        const metricKey = element.getAttribute('data-metric');
+        if (metricKey && currentUser[metricKey] !== undefined) {
+            element.textContent = currentUser[metricKey]; 
+        } else {
+            element.textContent = "N/A";
+        }
+    });
 }
 
+/**
+ * Initializes investment plans page with current balance and card constraints.
+ */
 function loadInvestmentPage() {
-    const renderBalance = () => {
-        const currentUser = getCurrentUser(false);
-        if (!currentUser) return;
-        const currentBalanceEl = document.getElementById('currentBalance');
-        if (currentBalanceEl) {
-            currentBalanceEl.textContent = currentUser.accountBalance;
-        }
-    };
+    const currentUser = getCurrentUser(false);
+    if (!currentUser) return;
 
-    renderBalance();
-    setInterval(renderBalance, 1000);
+    // Update Balance Display
+    const currentBalanceEl = document.getElementById('currentBalance');
+    if (currentBalanceEl) {
+        currentBalanceEl.textContent = currentUser.accountBalance;
+    }
 
+    // Initialize plan cards with min/max constraints
     INVESTMENT_PLANS.forEach(plan => {
         const rangeEl = document.getElementById(`range-${plan.id}`);
         const inputEl = document.getElementById(`amount-${plan.id}`);
@@ -304,6 +275,9 @@ function loadInvestmentPage() {
 
 // --- INVESTMENT TRANSACTION LOGIC ---
 
+/**
+ * Handles the investment transaction, validating input and updating user balance.
+ */
 function handleInvestment(planId) {
     const userEmail = sessionStorage.getItem('currentUserEmail');
     if (!userEmail) {
@@ -326,20 +300,26 @@ function handleInvestment(planId) {
     const currentUser = users[userIndex];
     const currentBalance = parseCurrency(currentUser.accountBalance);
 
+    // 1. Input Validation (Positive)
     if (investmentAmount <= 0) return alert("Please enter an investment amount.");
+    
+    // 2. Input Validation (Range)
     if (investmentAmount < plan.min) return alert(`Amount too low. Minimum required: $${formatCurrency(plan.min)}.`);
     if (investmentAmount > plan.max) return alert(`Amount too high. Maximum allowed: $${formatCurrency(plan.max)}.`);
 
+    // 3. Sufficient Balance
     if (currentBalance < investmentAmount) {
         return alert("Insufficient account balance. Please deposit funds.");
     }
 
+    // --- TRANSACTION SUCCESS ---
     const newBalance = currentBalance - investmentAmount;
     const newInitialInvestment = parseCurrency(currentUser.initialInvestment) + investmentAmount;
     
     currentUser.accountBalance = formatCurrency(newBalance);
     currentUser.initialInvestment = formatCurrency(newInitialInvestment);
     
+    // Add transaction record
     const investmentRecord = { planName: plan.name, amount: formatCurrency(investmentAmount), date: new Date().toLocaleDateString() };
     if (!currentUser.investments) currentUser.investments = [];
     currentUser.investments.push(investmentRecord); 
@@ -347,9 +327,10 @@ function handleInvestment(planId) {
     users[userIndex] = currentUser;
     localStorage.setItem('mockUsers', JSON.stringify(users));
 
+    // Success Feedback
     amountInput.value = '';
+    loadInvestmentPage(); 
     alert(`Success! $${formatCurrency(investmentAmount)} invested in ${plan.name}.`);
-    window.location.reload(); 
 }
 
 
@@ -373,6 +354,10 @@ function copyText() {
     }
 }
 
+
+// -----------------------------------------------------------
+// Expose functions globally for HTML event handlers
+// -----------------------------------------------------------
 window.handleInvestment = handleInvestment;
 window.logoutMock = logoutMock;
 window.registerMock = registerMock;
@@ -381,7 +366,10 @@ window.loadDashboard = loadDashboard;
 window.loadInvestmentPage = loadInvestmentPage;
 window.copyText = copyText;
 
+
+// --- INITIAL PAGE LOAD SETUP ---
 document.addEventListener('DOMContentLoaded', () => {
+    // Determine which page is loaded and run the correct initializer
     if (document.querySelector('#currentBalance')) {
         loadInvestmentPage();
     } else if (document.querySelector('.user-greeting-name')) {
