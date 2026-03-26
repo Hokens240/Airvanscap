@@ -23,15 +23,19 @@ function formatCurrency(number) {
 // --- INVESTMENT PLAN DEFINITIONS ---
 
 const INVESTMENT_PLANS = [
-    { id: 'plan_a', name: 'Silver Pack', min: 25000, max: 49999 },
-    { id: 'plan_b', name: 'Gold Pack', min: 50000, max: 99999 },
-    { id: 'plan_c', name: 'Ruby Pack', min: 100000, max: 199999 },
-    { id: 'plan_d', name: 'Premium Pack', min: 200000, max: 499999 },
-    { id: 'plan_e', name: 'Diamond Pack', min: 500000, max: 1000000 }
+    { id: 'plan_a', name: 'Starter Pack', min: 1000, max: 9999 },
+    { id: 'plan_b', name: 'Regular Pack', min: 10000, max: 24999 },
+    { id: 'plan_c', name: 'Gold Pack', min: 25000, max: 49999 },
+    { id: 'plan_d', name: 'Ruby Pack', min: 50000, max: 100000 },
+    { id: 'plan_e', name: 'Premium Pack', min: 200000, max: 1000000 }
 ];
 
 
 // --- DATABASE INITIALIZATION ---
+
+// Baseline for current session to calculate growth
+const SESSION_START_TIME = Date.now();
+const INCREMENT_RATE_PER_SECOND = 0.05; // Adjust speed of profit growth here
 
 function initializeMockUsers() {
     const initialUsers = [
@@ -67,11 +71,11 @@ function initializeMockUsers() {
             lastName: "Jules Guimond", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "0.00", 
-            totalProfit: "0.00", 
-            profitBalance: "0.00", 
+            accountBalance: "42,060.03", 
+            totalProfit: "42,060.03", 
+            profitBalance: "42,060.03", 
             initialInvestment: "230.06", 
-            returnOnInvestment: "0.00",
+            returnOnInvestment: "42,060.03",
             investments: []
         },
         { 
@@ -80,11 +84,11 @@ function initializeMockUsers() {
             lastName: "Stanley", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "16,730.00", 
-            totalProfit: "16,730.00", 
-            profitBalance: "16,730.00", 
-            initialInvestment: "5350.00", 
-            returnOnInvestment: "16,730.00",
+            accountBalance: "10,000.00", 
+            totalProfit: "10,000.00", 
+            profitBalance: "10,000.00", 
+            initialInvestment: "1350.00", 
+            returnOnInvestment: "10,000.00",
             investments: []
         },
     ];
@@ -109,8 +113,29 @@ function initializeMockUsers() {
 
     const mergedUsers = Array.from(userMap.values());
     localStorage.setItem('mockUsers', JSON.stringify(mergedUsers));
+}
 
-    console.log("Mock data synchronized.");
+/**
+ * Applies temporal growth to a user object for display purposes.
+ * This ensures financial metrics like Total Profit and ROI increment in real-time.
+ */
+function getCalculatedUser(user) {
+    if (!user) return null;
+    
+    const secondsElapsed = (Date.now() - SESSION_START_TIME) / 1000;
+    const increment = secondsElapsed * INCREMENT_RATE_PER_SECOND;
+
+    // Create a copy to avoid mutating the original source data
+    const updatedUser = { ...user };
+    
+    // Increment specific numeric metrics for visual effect in the UI
+    updatedUser.totalProfit = formatCurrency(parseCurrency(user.totalProfit) + increment);
+    updatedUser.returnOnInvestment = formatCurrency(parseCurrency(user.returnOnInvestment) + increment);
+    
+    // Increment profit balance at a slightly lower rate
+    updatedUser.profitBalance = formatCurrency(parseCurrency(user.profitBalance) + (increment * 0.5));
+
+    return updatedUser;
 }
 
 initializeMockUsers();
@@ -119,7 +144,7 @@ initializeMockUsers();
 // --- AUTHENTICATION & SESSION LOGIC ---
 
 /**
- * Retrieves the current user from session and local storage.
+ * Retrieves the current user and applies real-time growth calculations.
  */
 function getCurrentUser(redirectIfMissing = true) {
     const userEmail = sessionStorage.getItem('currentUserEmail');
@@ -142,7 +167,8 @@ function getCurrentUser(redirectIfMissing = true) {
         return null;
     }
     
-    return currentUser;
+    // Return the user with real-time increments applied to financial metrics
+    return getCalculatedUser(currentUser);
 }
 
 function registerMock() {
@@ -198,7 +224,6 @@ function loginMock() {
     const foundUser = users.find(user => user.email === normalizedLoginEmail);
 
     if (foundUser) {
-        // Mock users (pass: null) bypass password check.
         const passwordMatches = foundUser.pass === loginPass || foundUser.pass === null;
 
         if (passwordMatches) {
@@ -225,39 +250,43 @@ function logoutMock() {
 // --- DATA DISPLAY AND INITIALIZATION ---
 
 function loadDashboard() {
-    const currentUser = getCurrentUser(); 
-    if (!currentUser) return;
+    const render = () => {
+        const currentUser = getCurrentUser(); 
+        if (!currentUser) return;
 
-    // Update user name display
-    const fullName = `${currentUser.firstName ?? ''} ${currentUser.lastName ?? ''}`;
-    document.querySelectorAll('.user-greeting-name').forEach(el => el.textContent = fullName);
-    document.getElementById('userEmail').textContent = currentUser.email;
+        const fullName = `${currentUser.firstName ?? ''} ${currentUser.lastName ?? ''}`;
+        document.querySelectorAll('.user-greeting-name').forEach(el => el.textContent = fullName);
+        document.getElementById('userEmail').textContent = currentUser.email;
 
-    // Update financial metrics based on data-metric attributes
-    document.querySelectorAll('.financial-metric').forEach(element => {
-        const metricKey = element.getAttribute('data-metric');
-        if (metricKey && currentUser[metricKey] !== undefined) {
-            element.textContent = currentUser[metricKey]; 
-        } else {
-            element.textContent = "N/A";
-        }
-    });
+        // Updates all elements with the financial-metric class with the incrementing values
+        document.querySelectorAll('.financial-metric').forEach(element => {
+            const metricKey = element.getAttribute('data-metric');
+            if (metricKey && currentUser[metricKey] !== undefined) {
+                element.textContent = currentUser[metricKey]; 
+            } else {
+                element.textContent = "N/A";
+            }
+        });
+    };
+
+    render();
+    // Refresh display every second to show increasing numbers
+    setInterval(render, 1000);
 }
 
-/**
- * Initializes investment plans page with current balance and card constraints.
- */
 function loadInvestmentPage() {
-    const currentUser = getCurrentUser(false);
-    if (!currentUser) return;
+    const renderBalance = () => {
+        const currentUser = getCurrentUser(false);
+        if (!currentUser) return;
+        const currentBalanceEl = document.getElementById('currentBalance');
+        if (currentBalanceEl) {
+            currentBalanceEl.textContent = currentUser.accountBalance;
+        }
+    };
 
-    // Update Balance Display
-    const currentBalanceEl = document.getElementById('currentBalance');
-    if (currentBalanceEl) {
-        currentBalanceEl.textContent = currentUser.accountBalance;
-    }
+    renderBalance();
+    setInterval(renderBalance, 1000);
 
-    // Initialize plan cards with min/max constraints
     INVESTMENT_PLANS.forEach(plan => {
         const rangeEl = document.getElementById(`range-${plan.id}`);
         const inputEl = document.getElementById(`amount-${plan.id}`);
@@ -275,9 +304,6 @@ function loadInvestmentPage() {
 
 // --- INVESTMENT TRANSACTION LOGIC ---
 
-/**
- * Handles the investment transaction, validating input and updating user balance.
- */
 function handleInvestment(planId) {
     const userEmail = sessionStorage.getItem('currentUserEmail');
     if (!userEmail) {
@@ -300,26 +326,20 @@ function handleInvestment(planId) {
     const currentUser = users[userIndex];
     const currentBalance = parseCurrency(currentUser.accountBalance);
 
-    // 1. Input Validation (Positive)
     if (investmentAmount <= 0) return alert("Please enter an investment amount.");
-    
-    // 2. Input Validation (Range)
     if (investmentAmount < plan.min) return alert(`Amount too low. Minimum required: $${formatCurrency(plan.min)}.`);
     if (investmentAmount > plan.max) return alert(`Amount too high. Maximum allowed: $${formatCurrency(plan.max)}.`);
 
-    // 3. Sufficient Balance
     if (currentBalance < investmentAmount) {
         return alert("Insufficient account balance. Please deposit funds.");
     }
 
-    // --- TRANSACTION SUCCESS ---
     const newBalance = currentBalance - investmentAmount;
     const newInitialInvestment = parseCurrency(currentUser.initialInvestment) + investmentAmount;
     
     currentUser.accountBalance = formatCurrency(newBalance);
     currentUser.initialInvestment = formatCurrency(newInitialInvestment);
     
-    // Add transaction record
     const investmentRecord = { planName: plan.name, amount: formatCurrency(investmentAmount), date: new Date().toLocaleDateString() };
     if (!currentUser.investments) currentUser.investments = [];
     currentUser.investments.push(investmentRecord); 
@@ -327,10 +347,9 @@ function handleInvestment(planId) {
     users[userIndex] = currentUser;
     localStorage.setItem('mockUsers', JSON.stringify(users));
 
-    // Success Feedback
     amountInput.value = '';
-    loadInvestmentPage(); 
     alert(`Success! $${formatCurrency(investmentAmount)} invested in ${plan.name}.`);
+    window.location.reload(); 
 }
 
 
@@ -354,10 +373,6 @@ function copyText() {
     }
 }
 
-
-// -----------------------------------------------------------
-// Expose functions globally for HTML event handlers
-// -----------------------------------------------------------
 window.handleInvestment = handleInvestment;
 window.logoutMock = logoutMock;
 window.registerMock = registerMock;
@@ -366,10 +381,7 @@ window.loadDashboard = loadDashboard;
 window.loadInvestmentPage = loadInvestmentPage;
 window.copyText = copyText;
 
-
-// --- INITIAL PAGE LOAD SETUP ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Determine which page is loaded and run the correct initializer
     if (document.querySelector('#currentBalance')) {
         loadInvestmentPage();
     } else if (document.querySelector('.user-greeting-name')) {
