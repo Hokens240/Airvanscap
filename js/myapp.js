@@ -59,10 +59,10 @@ function initializeMockUsers() {
             country: "United States of America", 
             pass: null, 
             accountBalance: "0.00", 
-            totalProfit: "491,803.00", 
-            profitBalance: "0.00", 
+            totalProfit: "530,803.00", 
+            profitBalance: "8764.00", 
             initialInvestment: "0.00", 
-            returnOnInvestment: "454,992.00",
+            returnOnInvestment: "521,992.00",
             investments: []
         },
         { 
@@ -98,10 +98,10 @@ function initializeMockUsers() {
             country: "United States of America", 
             pass: null, 
             accountBalance: "1,500.00", 
-            totalProfit: "13138.00", 
-            profitBalance: "0.00", 
+            totalProfit: "14290.00", 
+            profitBalance: "1112.00", 
             initialInvestment: "1,500.00", 
-            returnOnInvestment: "11077.00",
+            returnOnInvestment: "12182.00",
             investments: []
         },
     ];
