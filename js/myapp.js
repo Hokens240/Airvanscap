@@ -58,7 +58,7 @@ function initializeMockUsers() {
             lastName: "Rojas", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "0", 
+            accountBalance: "1,575.00", 
             totalProfit: "0", 
             profitBalance: "14.00", 
             initialInvestment: "0.00", 
