@@ -49,7 +49,7 @@ function initializeMockUsers() {
             totalProfit: "427,568.00", 
             profitBalance: "102.00", 
             initialInvestment: "4,048.00", 
-            returnOnInvestment: "45980,998.00",
+            returnOnInvestment: "426,547.00",
             investments: []
         },
         { 
