@@ -46,10 +46,10 @@ function initializeMockUsers() {
             country: "United States of America", 
             pass: null, 
             accountBalance: "48.00", 
-            totalProfit: "422,865.00", 
-            profitBalance: "1054.00", 
+            totalProfit: "427,568.00", 
+            profitBalance: "102.00", 
             initialInvestment: "4,048.00", 
-            returnOnInvestment: "420,998.00",
+            returnOnInvestment: "45980,998.00",
             investments: []
         },
         { 
@@ -58,9 +58,9 @@ function initializeMockUsers() {
             lastName: "Rojas", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "0.00", 
+            accountBalance: "2000.00", 
             totalProfit: "421878.00", 
-            profitBalance: "1004.00", 
+            profitBalance: "14.00", 
             initialInvestment: "0.00", 
             returnOnInvestment: "420501.00",
             investments: []
@@ -98,10 +98,10 @@ function initializeMockUsers() {
             country: "United States of America", 
             pass: null, 
             accountBalance: "1,914.00", 
-            totalProfit: "36234.00", 
+            totalProfit: "38120.00", 
             profitBalance: "1450.00", 
-            initialInvestment: "1,090.00", 
-            returnOnInvestment: "35190.00",
+            initialInvestment: "1,321.00", 
+            returnOnInvestment: "37112.00",
             investments: []
         },
     ];
