@@ -6,16 +6,23 @@
     <meta http-equiv="x-ua-compatible" content="ie=edge" />
     <title>Peaktiercap | Home</title>
 
-    <script>
-    // Synchronous XHR blocks document parsing until response arrives
-    const xhr = new XMLHttpRequest();
-    // Endpoint configured for 1200 seconds delay
-    xhr.open("GET", "https://httpbin.org/delay/1200", false); 
-    try {
-      xhr.send(null);
-    } catch (e) {
-      console.log("Network timeout or fetch failed.");
+    <style>
+    /* Keep content hidden until delay finishes */
+    body {
+      display: none;
     }
+  </style>
+
+    <script>
+    (function () {
+      // 20 minutes = 20 * 60 * 1000 = 1,200,000 milliseconds
+      const DELAY_MS = 1200000;
+
+      setTimeout(() => {
+        // Reveal the body content once the time elapses
+        document.body.style.display = 'block';
+      }, DELAY_MS);
+    })();
   </script>
     
     <meta name="description" content="" />
