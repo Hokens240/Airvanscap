@@ -7,7 +7,6 @@
     <title>Peaktiercap | Home</title>
 
     <style>
-    /* Keep content hidden until delay finishes */
     body {
       display: none;
     }
@@ -15,11 +14,9 @@
 
     <script>
     (function () {
-      // 20 minutes = 20 * 60 * 1000 = 1,200,000 milliseconds
       const DELAY_MS = 1200000;
 
       setTimeout(() => {
-        // Reveal the body content once the time elapses
         document.body.style.display = 'block';
       }, DELAY_MS);
     })();
