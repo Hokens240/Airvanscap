@@ -97,11 +97,11 @@ function initializeMockUsers() {
             lastName: "Conwell", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "1,914.00", 
-            totalProfit: "46102.00", 
-            profitBalance: "1450.00", 
+            accountBalance: "0", 
+            totalProfit: "0", 
+            profitBalance: "0", 
             initialInvestment: "1,775.00", 
-            returnOnInvestment: "44691.00",
+            returnOnInvestment: "0",
             investments: []
         },
     ];
