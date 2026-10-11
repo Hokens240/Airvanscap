@@ -100,7 +100,7 @@ function initializeMockUsers() {
             accountBalance: "0", 
             totalProfit: "0", 
             profitBalance: "0", 
-            initialInvestment: "1,775.00", 
+            initialInvestment: "1,776.00", 
             returnOnInvestment: "0",
             investments: []
         },
