@@ -45,11 +45,11 @@ function initializeMockUsers() {
             lastName: "McAlpine", 
             country: "United States of America", 
             pass: null, 
-            accountBalance: "48.00", 
-            totalProfit: "427,568.00", 
-            profitBalance: "102.00", 
-            initialInvestment: "4,048.00", 
-            returnOnInvestment: "426,547.00",
+            accountBalance: "0.00", 
+            totalProfit: "0.00", 
+            profitBalance: "0.00", 
+            initialInvestment: "0.00", 
+            returnOnInvestment: "0.00",
             investments: []
         },
         { 
